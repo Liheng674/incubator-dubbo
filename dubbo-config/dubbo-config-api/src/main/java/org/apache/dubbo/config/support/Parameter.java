@@ -30,16 +30,38 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 public @interface Parameter {
 
+    /**
+     * 别名
+     */
     String key() default "";
 
+    /**
+     * 是否必须
+     */
     boolean required() default false;
 
+    /**
+     * 是否忽略
+     */
     boolean excluded() default false;
 
+    /**
+     * 是否转义
+     */
     boolean escaped() default false;
 
+    /**
+     * 是否为属性
+     *
+     * 事件通知, 在调用之前、调用之后、出现异常时, 会出发invoke return throw三个事件
+     *      配置当事件发生时, 调用哪个类的哪个方法
+     */
     boolean attribute() default false;
 
+    /**
+     * 是否默认拼接属性
+     * + {@link AbstractInterfaceConfig#getFilter}
+     */
     boolean append() default false;
 
 }
